@@ -1,0 +1,116 @@
+[SkirmisherReturnFire X2AbilityTemplate]LocFriendlyName = "응사"LocFlyOverText = "응사"LocHelpText = "적의 공격을 받으면, 턴마다 세 번까지 <Ability:WeaponName/>으로 자동 반격합니다."LocLongDescription = "적의 공격을 받으면, 턴마다 세 번까지 <Ability:WeaponName/>으로 자동 반격합니다."LocPromotionPopupText = "<Bullet/> 응사는 근접 공격과 광역 공격으로 발동될 수 있습니다.<br/><Bullet/> 응사는 경계 사격의 대상이 될때는 발동되지 않습니다.<br/>"[SkirmisherReflex X2AbilityTemplate]
+LocFriendlyName="반사 신경"
+LocLongDescription="사격을 받으면, 다음 턴에 하나의 추가 행동력을 얻습니다. 턴마다 한 번만 발동됩니다."
+LocHelpText="사격을 받으면, 다음 턴에 하나의 추가 행동력을 얻습니다. 턴마다 한 번만 발동됩니다."
+LocFlyoverText="반사 신경: 다음 턴 행동력 +1"
+LocPromotionPopupText="<Bullet/> 갈고리는 스커미셔를 매우 진보된 정찰병으로 만들어주며, 반사 신경은 그들의 공격적인 위치 확보에 대한 보상입니다.<br/>"
+
+[SkirmisherVengeance X2AbilityTemplate]
+LocFriendlyName="분노"
+LocLongDescription="갈고리를 사용해 적에게 이동하여 더 강력한 <Ability:SecondaryWeaponName/> 타격을 줍니다."
+LocHelpText="갈고리를 사용해 적에게 이동하여 더 강력한 <Ability:SecondaryWeaponName/> 타격을 줍니다."
+LocPromotionPopupText="<Bullet/> 분노는 스커미셔에게 추가 기동력을 부여하며, 갈고리가 쿨타임 중일 때 사용할 수 있습니다.<br/><Bullet/> <Ability:SecondaryWeaponName/> 이동이 성공하면 공격은 반드시 명중합니다.<br/><Bullet/> 분노를 사용하기 위해선 적 인근에 빈 공간이 있어야 합니다.<br/><Bullet/> 분노는 <Ability:SelfCooldown/>턴 동안 쿨타임을 가집니다.<br/>"
+
+[WrathDamageBuff X2AbilityTemplate]
+LocFriendlyName="강습"
+LocLongDescription="분노의 대미지가 2 증가합니다."
+LocHelpText="분노의 대미지가 2 증가합니다."
+LocPromotionPopupText="<Bullet/> <br/>"
+
+[ZeroIn X2AbilityTemplate]
+LocFriendlyName="제로 인"
+LocLongDescription="같은 턴 내에 적을 연속으로 공격할 때 마다 중첩 가능한 +5 조준 보너스 및 +10 치명타율 보너스를 제공합니다."
+LocHelpText="같은 턴 내에 적을 연속으로 공격할 때 마다 중첩 가능한 +5 조준 보너스 및 +10 치명타율 보너스를 제공합니다."
+LocFlyoverText="제로 인"
+LocPromotionPopupText="<Bullet/> 한 턴당 많은 행동을 하는 스커미셔의 능력을 통해 제로 인으로부터 엄청난 보너스를 얻을 수 있습니다.<br/><Bullet/> 립잭 타격이나 채찍질 같은 다른 공격 능력들 또한 일반 사격과 마찬가지로 제로 인을 발동하며 그 보너스를 받을 수 있습니다.<br/>"
+
+[FullThrottle X2AbilityTemplate]
+LocFriendlyName="풀 쓰로틀"
+LocLongDescription="발동시 무료로 이동 행동력 한 개를 획득합니다."
+LocHelpText="발동시 무료로 이동 행동력 한 개를 획득합니다."
+LocFlyoverText="풀 쓰로틀"
+LocPromotionPopupText="<Bullet/> .<br/><Bullet/> 풀 쓰로틀은 6턴 동안 쿨다운을 가집니다.<br/>"
+
+[SkirmisherInterrupt X2AbilityTemplate]
+LocFriendlyName="중단"
+LocLongDescription="경계의 강화된 버전으로 자동으로 사격하는 대신 적을 1개의 행동력만큼 기절시키고 1개의 행동력을 사용할 수 있습니다."
+LocHelpText="경계의 강화된 버전으로 자동으로 사격하는 대신 적을 1개의 행동력만큼 기절시키고 1개의 행동력을 사용할 수 있습니다."
+LocFlyOverText="중단"
+LocPromotionPopupText="<Bullet/> 경계 같은 일부 행동은 중단 능력 발동 중에 사용할 수 없습니다. <br/>"
+
+[SkirmisherInterruptInput X2AbilityTemplate]
+LocFriendlyName="중단"
+LocLongDescription="경계의 강화된 버전으로 자동으로 사격하는 대신 적을 1개의 행동력만큼 기절시키고 1개의 행동력을 사용할 수 있습니다."
+LocHelpText="경계의 강화된 버전으로 자동으로 사격하는 대신 적을 1개의 행동력만큼 기절시키고 1개의 행동력을 사용할 수 있습니다."
+LocFlyOverText="중단"
+LocPromotionPopupText="<Bullet/> 경계 같은 일부 행동은 중단 능력 발동 중에 사용할 수 없습니다. <br/>"
+
+[ManualOverride X2AbilityTemplate]
+LocFriendlyName="수동 조작"
+LocLongDescription="모든 능력 쿨다운을 1로 낮춥니다."
+LocHelpText="모든 능력 쿨다운을 1로 낮춥니다."
+LocPromotionPopupText="<Bullet/> 스커미셔의 능력들을 먼저, 그리고 자주 사용하여 수동 조작의 효과를 극대화하십시오.<br/>"
+
+[Battlelord X2AbilityTemplate]
+LocFriendlyName="배틀로드"
+LocLongDescription="시야 내에 있는 각 적이 행동을 한 후, 즉시 액션을 취할 수 있습니다."
+LocHelpText="시야 내에 있는 각 적이 행동을 한 후, 즉시 액션을 취할 수 있습니다."
+LocFlyOverText="배틀로드"
+LocPromotionPopupText="<Bullet/> 배틀로드는 스커미셔로 하여금 가장 심각한 상황에서도 살아남을 수 있게 합니다.<br/><Bullet/> 배틀로드 효과를 받는 동안 적의 공격을 받을 때 마다 다른 모든 능력의 쿨다운을 1 줄입니다.<br/><Bullet/> 배틀로드는 임무마다 오직 한 번만 사용할 수 있습니다.<br/><Bullet/> 로스트의 행동 직후나 적 포드가 드러나는 것으론 즉각적인 액션이 허용되지 않습니다.<br/>"
+
+[Parkour X2AbilityTemplate]
+LocFriendlyName="파쿠르"
+LocLongDescription="턴의 첫 번째 이동 이후 이동이 불가능한 행동력을 하나 얻습니다."
+LocHelpText="턴의 첫 번째 이동 이후 이동이 불가능한 행동력을 하나 얻습니다."
+
+[ParkourPassive X2AbilityTemplate]
+LocFriendlyName="파쿠르"
+LocLongDescription="턴의 첫 번째 이동 이후 이동이 불가능한 행동력을 하나 얻습니다."
+LocHelpText="턴의 첫 번째 이동 이후 이동이 불가능한 행동력을 하나 얻습니다."
+
+[ParkourUnlock X2SoldierAbilityUnlockTemplate]
+DisplayName="스커미셔: 파쿠르"
+Summary="턴의 첫 번째 이동 이후 이동이 불가능한 행동력을 하나 얻습니다."
+
+[SKR_TotalCombat X2AbilityTemplate]
+LocFriendlyName="토탈 컴뱃"
+LocLongDescription="일반적인 사격, 수류탄 투척 또는 아이템 사용으로 인해 턴이 종료되지 않습니다."
+LocHelpText="일반적인 사격, 수류탄 투척 또는 아이템 사용으로 인해 턴이 종료되지 않습니다."
+LocPromotionPopupText="<Bullet/> 토탈 컴뱃은 필요한 상황에 적절한 행동을 허용함으로써 스커미셔의 턴에 더 많은 유연성을 더해 줍니다.<br/>"
+
+[SKR_BulletTime X2AbilityTemplate]
+LocFriendlyName="불릿타임"
+LocLongDescription="스커미셔의 뛰어난 회피 능력을 통해 치명상을 피하고 찰과상 대미지를 줄입니다."
+LocHelpText="스커미셔의 뛰어난 회피 능력을 통해 치명상을 피하고 찰과상 대미지를 줄입니다."
+LocFlyoverText="불릿타임!"
+LocPromotionPopupText="<Bullet/> 불릿타임을 통해 스커미셔가 공격적인 위치를 잡는 위험성을 줄일 수 있습니다.<br/><Bullet/> 스커미셔를 조준하는 적들은 -50 치명타율 패널티를 받으며, 스커미셔가 받는 찰과상 대미지가 3 줄어듭니다.<br/><Bullet/> 대미지는 1 이하로 줄어들지 않습니다.<br/>"
+
+[SKR_Optimization X2AbilityTemplate]
+LocFriendlyName="최적화"
+LocLongDescription="경계와 대응 공격이 치명타를 발생 할 수 있으며, 이전 턴에 얻은 제로 인의 보너스를 받습니다."
+LocHelpText="경계와 대응 공격이 치명타를 발생 할 수 있으며, 아군 턴에 얻은 제로 인의 보너스를 받습니다."
+LocFlyoverText="최적화"
+LocPromotionPopupText="<Bullet/> 제로 인의 보너스를 적 턴까지 유지함으로써 대응 능력이 더욱 치명적으로 변합니다.<br/><Bullet/> 대응 사격으로는 여전히 제로 인을 발동할 수 없습니다.<br/><Bullet/> 중단 또는 배틀로드의 인터럽트 헹동력은 최적화의 보너스를 받지 않습니다.<br/>"
+
+[SKR_Tuning X2AbilityTemplate]
+LocFriendlyName="튜닝"
+LocLongDescription="<Ability:WeaponName/>의 대미지가 1, 클립크기가 4 증가합니다. 또한 <Ability:SecondaryWeaponName/>의 대미지가 1, 치명타율이 20 증가합니다."
+LocHelpText="<Ability:WeaponName/>의 대미지가 1, 클립크기가 4 증가합니다. 또한 <Ability:SecondaryWeaponName/>의 대미지가 1, 치명타율이 20 증가합니다."
+LocPromotionPopupText="<Bullet/> 무기 개조를 통해 스커미셔의 공격 능력이 대폭 향상됩니다.<br/>"
+
+[SKR_ShotGrouping X2AbilityTemplate]
+LocFriendlyName="탄착군 형성"
+LocLongDescription="빗나간 사격이 2 대미지를 입힙니다."
+LocHelpText="빗나간 사격이 2 대미지를 입힙니다."
+LocPromotionPopupText="<Bullet/>.<br/>"
+
+[SKR_DeepPockets X2AbilityTemplate]
+LocFriendlyName="깊은 주머니"
+LocHelpText="유틸리티 슬롯의 아이템의 사용횟수가 1회 늘어납니다."
+LocLongDescription="유틸리티 슬롯의 아이템의 사용횟수가 1회 늘어납니다."
+LocPromotionPopupText="<Bullet/> 굴절 필드나 오버드라이브 혈청과 같은 소모성 아이템들은 이 능력의 영항을 받지 않습니다..<br/>"
+
+;쓰레기코드임
+[X2Ability_ReworkedSkirmisherPerkPack]
+sTacticalAnalysisFlyoverText="전술 분석"
+sTacticalAnalysisWorldMessageText="<XGParam:StrValue0/!UnitName/>의 행동이 중단되었습니다."

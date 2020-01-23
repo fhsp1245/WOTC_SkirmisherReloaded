@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Guid>84643029-f9f9-40bc-bcbf-358ed4ec3693</Guid>
+    <Name>Skirmisher Reloaded</Name>
+    <Description>Description of My XCOM 2 Mod.</Description>
+    <SteamPublishID>0</SteamPublishID>
+    <AssemblyName>SKR_Revengeance</AssemblyName>
+    <RootNamespace>SKR_Revengeance</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Content" />
+    <Folder Include="Src\" />
+    <Folder Include="Src\Lw_Tuple" />
+    <Folder Include="Src\Lw_Tuple\Classes" />
+    <Folder Include="Src\SkirmisherReloaded" />
+    <Folder Include="Src\SkirmisherReloaded\Classes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\XComClassData.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGameData_SoldierSkills.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComGameData_WeaponData.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Config\XComSkirmisherReloaded.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Content\SKR_NewSkirmisherPerkPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\XComGame.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\XComGame.kor">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ReadMe.txt" />
+    <Content Include="ModPreview.jpg" />
+    <Content Include="Config\XComEditor.ini" />
+    <Content Include="Config\XComEngine.ini" />
+    <Content Include="Config\XComGame.ini" />
+    <Content Include="Src\Lw_Tuple\Classes\LWTuple.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Ability_NewSkirmisherPerkPack.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Ability_ReworkedSkirmisherPerkPack.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2DownloadableContentInfo_SkirmisherReloaded.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_BattlelordReduceCooldown.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_BulletTime_SKR.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_Optimization_SKR.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedBattlelord.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedManualOverride.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedReflex.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedZeroIn.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ShotGrouping_SKR.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_TuningDamage_SKR.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_TuningPrimaryClip_SKR.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_WrathDamage.uc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
+</Project>
