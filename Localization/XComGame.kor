@@ -1,4 +1,4 @@
-[SkirmisherReturnFire X2AbilityTemplate]LocFriendlyName = "ÀÀ»ç"LocFlyOverText = "ÀÀ»ç"LocHelpText = "ÀûÀÇ °ø°ÝÀ» ¹ÞÀ¸¸é, ÅÏ¸¶´Ù ¼¼ ¹ø±îÁö <Ability:WeaponName/>À¸·Î ÀÚµ¿ ¹Ý°ÝÇÕ´Ï´Ù."LocLongDescription = "ÀûÀÇ °ø°ÝÀ» ¹ÞÀ¸¸é, ÅÏ¸¶´Ù ¼¼ ¹ø±îÁö <Ability:WeaponName/>À¸·Î ÀÚµ¿ ¹Ý°ÝÇÕ´Ï´Ù."LocPromotionPopupText = "<Bullet/> ÀÀ»ç´Â ±ÙÁ¢ °ø°Ý°ú ±¤¿ª °ø°ÝÀ¸·Î ¹ßµ¿µÉ ¼ö ÀÖ½À´Ï´Ù.<br/><Bullet/> ÀÀ»ç´Â °æ°è »ç°ÝÀÇ ´ë»óÀÌ µÉ¶§´Â ¹ßµ¿µÇÁö ¾Ê½À´Ï´Ù.<br/>"[SkirmisherReflex X2AbilityTemplate]
+[SkirmisherReturnFire X2AbilityTemplate]LocFriendlyName = "ÀÀ»ç"LocFlyOverText = "ÀÀ»ç"LocHelpText = "ÀûÀÇ °ø°ÝÀ» ¹ÞÀ¸¸é, ÅÏ¸¶´Ù <Ability:iMAX_RETURNFIRE_TRIGGER/>¹ø±îÁö <Ability:WeaponName/>À¸·Î ÀÚµ¿ ¹Ý°ÝÇÕ´Ï´Ù."LocLongDescription = "ÀûÀÇ °ø°ÝÀ» ¹ÞÀ¸¸é, ÅÏ¸¶´Ù <Ability:iMAX_RETURNFIRE_TRIGGER/>¹ø±îÁö <Ability:WeaponName/>À¸·Î ÀÚµ¿ ¹Ý°ÝÇÕ´Ï´Ù."LocPromotionPopupText = "<Bullet/> ÀÀ»ç´Â ±ÙÁ¢ °ø°Ý°ú ±¤¿ª °ø°ÝÀ¸·Î ¹ßµ¿µÉ ¼ö ÀÖ½À´Ï´Ù.<br/><Bullet/> ÀÀ»ç´Â °æ°è »ç°ÝÀÇ ´ë»óÀÌ µÉ¶§´Â ¹ßµ¿µÇÁö ¾Ê½À´Ï´Ù.<br/>"[SkirmisherReflex X2AbilityTemplate]
 LocFriendlyName="¹Ý»ç ½Å°æ"
 LocLongDescription="»ç°ÝÀ» ¹ÞÀ¸¸é, ´ÙÀ½ ÅÏ¿¡ ÇÏ³ªÀÇ Ãß°¡ Çàµ¿·ÂÀ» ¾ò½À´Ï´Ù. ÅÏ¸¶´Ù ÇÑ ¹ø¸¸ ¹ßµ¿µË´Ï´Ù."
 LocHelpText="»ç°ÝÀ» ¹ÞÀ¸¸é, ´ÙÀ½ ÅÏ¿¡ ÇÏ³ªÀÇ Ãß°¡ Çàµ¿·ÂÀ» ¾ò½À´Ï´Ù. ÅÏ¸¶´Ù ÇÑ ¹ø¸¸ ¹ßµ¿µË´Ï´Ù."
@@ -13,14 +13,14 @@ LocPromotionPopupText="<Bullet/> ºÐ³ë´Â ½ºÄ¿¹Ì¼Å¿¡°Ô Ãß°¡ ±âµ¿·ÂÀ» ºÎ¿©ÇÏ¸ç, °¥°
 
 [WrathDamageBuff X2AbilityTemplate]
 LocFriendlyName="°­½À"
-LocLongDescription="ºÐ³ëÀÇ ´ë¹ÌÁö°¡ 2 Áõ°¡ÇÕ´Ï´Ù."
-LocHelpText="ºÐ³ëÀÇ ´ë¹ÌÁö°¡ 2 Áõ°¡ÇÕ´Ï´Ù."
+LocLongDescription="ºÐ³ëÀÇ ´ë¹ÌÁö°¡ <Ability:iWRATH_DAMAGE_BONUS/> Áõ°¡ÇÕ´Ï´Ù."
+LocHelpText="ºÐ³ëÀÇ ´ë¹ÌÁö°¡ <Ability:iWRATH_DAMAGE_BONUS/> Áõ°¡ÇÕ´Ï´Ù."
 LocPromotionPopupText="<Bullet/> <br/>"
 
 [ZeroIn X2AbilityTemplate]
 LocFriendlyName="Á¦·Î ÀÎ"
-LocLongDescription="°°Àº ÅÏ ³»¿¡ ÀûÀ» ¿¬¼ÓÀ¸·Î °ø°ÝÇÒ ¶§ ¸¶´Ù ÁßÃ¸ °¡´ÉÇÑ +5 Á¶ÁØ º¸³Ê½º ¹× +10 Ä¡¸íÅ¸À² º¸³Ê½º¸¦ Á¦°øÇÕ´Ï´Ù."
-LocHelpText="°°Àº ÅÏ ³»¿¡ ÀûÀ» ¿¬¼ÓÀ¸·Î °ø°ÝÇÒ ¶§ ¸¶´Ù ÁßÃ¸ °¡´ÉÇÑ +5 Á¶ÁØ º¸³Ê½º ¹× +10 Ä¡¸íÅ¸À² º¸³Ê½º¸¦ Á¦°øÇÕ´Ï´Ù."
+LocLongDescription="°°Àº ÅÏ ³»¿¡ ÀûÀ» ¿¬¼ÓÀ¸·Î °ø°ÝÇÒ ¶§ ¸¶´Ù ÁßÃ¸ °¡´ÉÇÑ +<Ability:iZEROIN_AIM_BONUS/> Á¶ÁØ º¸³Ê½º ¹× +<Ability:iZEROIN_CRIT_BONUS/> Ä¡¸íÅ¸À² º¸³Ê½º¸¦ Á¦°øÇÕ´Ï´Ù."
+LocHelpText="°°Àº ÅÏ ³»¿¡ ÀûÀ» ¿¬¼ÓÀ¸·Î °ø°ÝÇÒ ¶§ ¸¶´Ù ÁßÃ¸ °¡´ÉÇÑ +<Ability:iZEROIN_AIM_BONUS/> Á¶ÁØ º¸³Ê½º ¹× +<Ability:iZEROIN_CRIT_BONUS/> Ä¡¸íÅ¸À² º¸³Ê½º¸¦ Á¦°øÇÕ´Ï´Ù."
 LocFlyoverText="Á¦·Î ÀÎ"
 LocPromotionPopupText="<Bullet/> ÇÑ ÅÏ´ç ¸¹Àº Çàµ¿À» ÇÏ´Â ½ºÄ¿¹Ì¼ÅÀÇ ´É·ÂÀ» ÅëÇØ Á¦·Î ÀÎÀ¸·ÎºÎÅÍ ¾öÃ»³­ º¸³Ê½º¸¦ ¾òÀ» ¼ö ÀÖ½À´Ï´Ù.<br/><Bullet/> ¸³Àè Å¸°ÝÀÌ³ª Ã¤ÂïÁú °°Àº ´Ù¸¥ °ø°Ý ´É·Âµé ¶ÇÇÑ ÀÏ¹Ý »ç°Ý°ú ¸¶Âù°¡Áö·Î Á¦·Î ÀÎÀ» ¹ßµ¿ÇÏ¸ç ±× º¸³Ê½º¸¦ ¹ÞÀ» ¼ö ÀÖ½À´Ï´Ù.<br/>"
 
@@ -29,7 +29,7 @@ LocFriendlyName="Ç® ¾²·ÎÆ²"
 LocLongDescription="¹ßµ¿½Ã ¹«·á·Î ÀÌµ¿ Çàµ¿·Â ÇÑ °³¸¦ È¹µæÇÕ´Ï´Ù."
 LocHelpText="¹ßµ¿½Ã ¹«·á·Î ÀÌµ¿ Çàµ¿·Â ÇÑ °³¸¦ È¹µæÇÕ´Ï´Ù."
 LocFlyoverText="Ç® ¾²·ÎÆ²"
-LocPromotionPopupText="<Bullet/> .<br/><Bullet/> Ç® ¾²·ÎÆ²Àº 6ÅÏ µ¿¾È Äð´Ù¿îÀ» °¡Áý´Ï´Ù.<br/>"
+LocPromotionPopupText="<Bullet/> Ç® ¾²·ÎÆ²·Î ¾òÀº Çàµ¿·ÂÀ¸·Î´Â ÀÌµ¿À» Á¦¿ÜÇÑ ´Ù¸¥ Çàµ¿À» ÃëÇÒ ¼ö ¾ø½À´Ï´Ù.<br/><Bullet/> Ç® ¾²·ÎÆ²Àº <Ability:iFULLTHROTTLE_COOLDOWN/>ÅÏ µ¿¾È Äð´Ù¿îÀ» °¡Áý´Ï´Ù.<br/>"
 
 [SkirmisherInterrupt X2AbilityTemplate]
 LocFriendlyName="Áß´Ü"
@@ -47,26 +47,28 @@ LocPromotionPopupText="<Bullet/> °æ°è °°Àº ÀÏºÎ Çàµ¿Àº Áß´Ü ´É·Â ¹ßµ¿ Áß¿¡ »ç¿ëÇ
 
 [ManualOverride X2AbilityTemplate]
 LocFriendlyName="¼öµ¿ Á¶ÀÛ"
-LocLongDescription="¸ðµç ´É·Â Äð´Ù¿îÀ» 1·Î ³·Ãä´Ï´Ù."
-LocHelpText="¸ðµç ´É·Â Äð´Ù¿îÀ» 1·Î ³·Ãä´Ï´Ù."
-LocPromotionPopupText="<Bullet/> ½ºÄ¿¹Ì¼ÅÀÇ ´É·ÂµéÀ» ¸ÕÀú, ±×¸®°í ÀÚÁÖ »ç¿ëÇÏ¿© ¼öµ¿ Á¶ÀÛÀÇ È¿°ú¸¦ ±Ø´ëÈ­ÇÏ½Ê½Ã¿À.<br/>"
+LocLongDescription="¸ðµç ´É·ÂÀÇ Äð´Ù¿îÀ» 1·Î ³·Ãä´Ï´Ù."
+LocHelpText="¸ðµç ´É·ÂÀÇ Äð´Ù¿îÀ» 1·Î ³·Ãä´Ï´Ù."
+LocPromotionPopupText="<Bullet/> ½ºÄ¿¹Ì¼ÅÀÇ ´É·ÂµéÀ» ¸ÕÀú, ±×¸®°í ÀÚÁÖ »ç¿ëÇÏ¿© ¼öµ¿ Á¶ÀÛÀÇ È¿°ú¸¦ ±Ø´ëÈ­ÇÏ½Ê½Ã¿À.<br/><Bullet/> ¼öµ¿ Á¶ÀÛÀº <Ability:iMANUAL_OVERRIDE_COOLDOWN/>ÅÏ µ¿¾È Äð´Ù¿îÀ» °¡Áý´Ï´Ù.<br/>"
 
 [Battlelord X2AbilityTemplate]
 LocFriendlyName="¹èÆ²·Îµå"
 LocLongDescription="½Ã¾ß ³»¿¡ ÀÖ´Â °¢ ÀûÀÌ Çàµ¿À» ÇÑ ÈÄ, Áï½Ã ¾×¼ÇÀ» ÃëÇÒ ¼ö ÀÖ½À´Ï´Ù."
 LocHelpText="½Ã¾ß ³»¿¡ ÀÖ´Â °¢ ÀûÀÌ Çàµ¿À» ÇÑ ÈÄ, Áï½Ã ¾×¼ÇÀ» ÃëÇÒ ¼ö ÀÖ½À´Ï´Ù."
 LocFlyOverText="¹èÆ²·Îµå"
-LocPromotionPopupText="<Bullet/> ¹èÆ²·Îµå´Â ½ºÄ¿¹Ì¼Å·Î ÇÏ¿©±Ý °¡Àå ½É°¢ÇÑ »óÈ²¿¡¼­µµ »ì¾Æ³²À» ¼ö ÀÖ°Ô ÇÕ´Ï´Ù.<br/><Bullet/> ¹èÆ²·Îµå È¿°ú¸¦ ¹Þ´Â µ¿¾È ÀûÀÇ °ø°ÝÀ» ¹ÞÀ» ¶§ ¸¶´Ù ´Ù¸¥ ¸ðµç ´É·ÂÀÇ Äð´Ù¿îÀ» 1 ÁÙÀÔ´Ï´Ù.<br/><Bullet/> ¹èÆ²·Îµå´Â ÀÓ¹«¸¶´Ù ¿ÀÁ÷ ÇÑ ¹ø¸¸ »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.<br/><Bullet/> ·Î½ºÆ®ÀÇ Çàµ¿ Á÷ÈÄ³ª Àû Æ÷µå°¡ µå·¯³ª´Â °ÍÀ¸·Ð Áï°¢ÀûÀÎ ¾×¼ÇÀÌ Çã¿ëµÇÁö ¾Ê½À´Ï´Ù.<br/>"
+LocPromotionPopupText="<Bullet/> ¹èÆ²·Îµå´Â ½ºÄ¿¹Ì¼Å·Î ÇÏ¿©±Ý °¡Àå ½É°¢ÇÑ »óÈ²¿¡¼­µµ »ì¾Æ³²À» ¼ö ÀÖ°Ô ÇÕ´Ï´Ù.<br/><Bullet/> ¹èÆ²·Îµå È¿°ú¸¦ ¹Þ´Â µ¿¾È ÀûÀÇ °ø°ÝÀ» ¹ÞÀ» ¶§ ¸¶´Ù ´Ù¸¥ ¸ðµç ´É·ÂÀÇ Äð´Ù¿îÀ» 1 ÁÙÀÔ´Ï´Ù.<br/><Bullet/> <Ability:sBATTLELORD_LOC_DESC/><br/><Bullet/> ·Î½ºÆ®ÀÇ Çàµ¿ Á÷ÈÄ³ª Àû Æ÷µå°¡ µå·¯³ª´Â °ÍÀ¸·Ð Áï°¢ÀûÀÎ ¾×¼ÇÀÌ Çã¿ëµÇÁö ¾Ê½À´Ï´Ù.<br/>"
 
 [Parkour X2AbilityTemplate]
 LocFriendlyName="ÆÄÄí¸£"
 LocLongDescription="ÅÏÀÇ Ã¹ ¹øÂ° ÀÌµ¿ ÀÌÈÄ ÀÌµ¿ÀÌ ºÒ°¡´ÉÇÑ Çàµ¿·ÂÀ» ÇÏ³ª ¾ò½À´Ï´Ù."
 LocHelpText="ÅÏÀÇ Ã¹ ¹øÂ° ÀÌµ¿ ÀÌÈÄ ÀÌµ¿ÀÌ ºÒ°¡´ÉÇÑ Çàµ¿·ÂÀ» ÇÏ³ª ¾ò½À´Ï´Ù."
+LocFlyoverText="ÆÄÄí¸£: +1 ¾îºô¸®Æ¼ Æ÷ÀÎÆ®"
 
 [ParkourPassive X2AbilityTemplate]
 LocFriendlyName="ÆÄÄí¸£"
 LocLongDescription="ÅÏÀÇ Ã¹ ¹øÂ° ÀÌµ¿ ÀÌÈÄ ÀÌµ¿ÀÌ ºÒ°¡´ÉÇÑ Çàµ¿·ÂÀ» ÇÏ³ª ¾ò½À´Ï´Ù."
 LocHelpText="ÅÏÀÇ Ã¹ ¹øÂ° ÀÌµ¿ ÀÌÈÄ ÀÌµ¿ÀÌ ºÒ°¡´ÉÇÑ Çàµ¿·ÂÀ» ÇÏ³ª ¾ò½À´Ï´Ù."
+LocFlyoverText="ÆÄÄí¸£: +1 ¾îºô¸®Æ¼ Æ÷ÀÎÆ®"
 
 [ParkourUnlock X2SoldierAbilityUnlockTemplate]
 DisplayName="½ºÄ¿¹Ì¼Å: ÆÄÄí¸£"
@@ -79,11 +81,11 @@ LocHelpText="ÀÏ¹ÝÀûÀÎ »ç°Ý, ¼ö·ùÅº ÅõÃ´ ¶Ç´Â ¾ÆÀÌÅÛ »ç¿ëÀ¸·Î ÀÎÇØ ÅÏÀÌ Á¾·áµÇÁö 
 LocPromotionPopupText="<Bullet/> ÅäÅ» ÄÄ¹îÀº ÇÊ¿äÇÑ »óÈ²¿¡ ÀûÀýÇÑ Çàµ¿À» Çã¿ëÇÔÀ¸·Î½á ½ºÄ¿¹Ì¼ÅÀÇ ÅÏ¿¡ ´õ ¸¹Àº À¯¿¬¼ºÀ» ´õÇØ ÁÝ´Ï´Ù.<br/>"
 
 [SKR_BulletTime X2AbilityTemplate]
-LocFriendlyName="ºÒ¸´Å¸ÀÓ"
+LocFriendlyName="ºÒ¸´ Å¸ÀÓ"
 LocLongDescription="½ºÄ¿¹Ì¼ÅÀÇ ¶Ù¾î³­ È¸ÇÇ ´É·ÂÀ» ÅëÇØ Ä¡¸í»óÀ» ÇÇÇÏ°í Âû°ú»ó ´ë¹ÌÁö¸¦ ÁÙÀÔ´Ï´Ù."
 LocHelpText="½ºÄ¿¹Ì¼ÅÀÇ ¶Ù¾î³­ È¸ÇÇ ´É·ÂÀ» ÅëÇØ Ä¡¸í»óÀ» ÇÇÇÏ°í Âû°ú»ó ´ë¹ÌÁö¸¦ ÁÙÀÔ´Ï´Ù."
-LocFlyoverText="ºÒ¸´Å¸ÀÓ!"
-LocPromotionPopupText="<Bullet/> ºÒ¸´Å¸ÀÓÀ» ÅëÇØ ½ºÄ¿¹Ì¼Å°¡ °ø°ÝÀûÀÎ À§Ä¡¸¦ Àâ´Â À§Çè¼ºÀ» ÁÙÀÏ ¼ö ÀÖ½À´Ï´Ù.<br/><Bullet/> ½ºÄ¿¹Ì¼Å¸¦ Á¶ÁØÇÏ´Â ÀûµéÀº -50 Ä¡¸íÅ¸À² ÆÐ³ÎÆ¼¸¦ ¹ÞÀ¸¸ç, ½ºÄ¿¹Ì¼Å°¡ ¹Þ´Â Âû°ú»ó ´ë¹ÌÁö°¡ 3 ÁÙ¾îµì´Ï´Ù.<br/><Bullet/> ´ë¹ÌÁö´Â 1 ÀÌÇÏ·Î ÁÙ¾îµéÁö ¾Ê½À´Ï´Ù.<br/>"
+LocFlyoverText="ºÒ¸´ Å¸ÀÓ!"
+LocPromotionPopupText="<Bullet/> ºÒ¸´Å¸ÀÓÀ» ÅëÇØ ½ºÄ¿¹Ì¼Å°¡ °ø°ÝÀûÀÎ À§Ä¡¸¦ Àâ´Â À§Çè¼ºÀ» ÁÙÀÏ ¼ö ÀÖ½À´Ï´Ù.<br/><Bullet/> ½ºÄ¿¹Ì¼Å¸¦ Á¶ÁØÇÏ´Â ÀûµéÀº -<Ability:iBULLETTIME_TOCRITHIT_MODIFIER/> Ä¡¸íÅ¸À² ÆÐ³ÎÆ¼¸¦ ¹ÞÀ¸¸ç, ½ºÄ¿¹Ì¼Å°¡ ¹Þ´Â Âû°ú»ó ´ë¹ÌÁö°¡ <Ability:iBULLETTIME_GRAZEDMG_MODIFIER/> ÁÙ¾îµì´Ï´Ù.<br/><Bullet/> ´ë¹ÌÁö´Â 1 ÀÌÇÏ·Î ÁÙ¾îµéÁö ¾Ê½À´Ï´Ù.<br/>"
 
 [SKR_Optimization X2AbilityTemplate]
 LocFriendlyName="ÃÖÀûÈ­"
@@ -94,23 +96,18 @@ LocPromotionPopupText="<Bullet/> Á¦·Î ÀÎÀÇ º¸³Ê½º¸¦ Àû ÅÏ±îÁö À¯ÁöÇÔÀ¸·Î½á ´ëÀÀ 
 
 [SKR_Tuning X2AbilityTemplate]
 LocFriendlyName="Æ©´×"
-LocLongDescription="<Ability:WeaponName/>ÀÇ ´ë¹ÌÁö°¡ 1, Å¬¸³Å©±â°¡ 4 Áõ°¡ÇÕ´Ï´Ù. ¶ÇÇÑ <Ability:SecondaryWeaponName/>ÀÇ ´ë¹ÌÁö°¡ 1, Ä¡¸íÅ¸À²ÀÌ 20 Áõ°¡ÇÕ´Ï´Ù."
-LocHelpText="<Ability:WeaponName/>ÀÇ ´ë¹ÌÁö°¡ 1, Å¬¸³Å©±â°¡ 4 Áõ°¡ÇÕ´Ï´Ù. ¶ÇÇÑ <Ability:SecondaryWeaponName/>ÀÇ ´ë¹ÌÁö°¡ 1, Ä¡¸íÅ¸À²ÀÌ 20 Áõ°¡ÇÕ´Ï´Ù."
+LocLongDescription="<Ability:WeaponName/>ÀÇ ´ë¹ÌÁö°¡ <Ability:iTUNING_BONUSDMG/>, Å¬¸³Å©±â°¡ <Ability:iTUNING_BONUSCLIP_PRIMARY/> Áõ°¡ÇÕ´Ï´Ù. ¶ÇÇÑ <Ability:SecondaryWeaponName/>ÀÇ ´ë¹ÌÁö°¡ <Ability:iTUNING_BONUSDMG/>, Ä¡¸íÅ¸À²ÀÌ <Ability:iTUNING_BONUSCRIT_SECONDARY/> Áõ°¡ÇÕ´Ï´Ù."
+LocHelpText="<Ability:WeaponName/>ÀÇ ´ë¹ÌÁö°¡ <Ability:iTUNING_BONUSDMG/>, Å¬¸³Å©±â°¡ <Ability:iTUNING_BONUSCLIP_PRIMARY/> Áõ°¡ÇÕ´Ï´Ù. ¶ÇÇÑ <Ability:SecondaryWeaponName/>ÀÇ ´ë¹ÌÁö°¡ <Ability:iTUNING_BONUSDMG/>, Ä¡¸íÅ¸À²ÀÌ <Ability:iTUNING_BONUSCRIT_SECONDARY/> Áõ°¡ÇÕ´Ï´Ù."
 LocPromotionPopupText="<Bullet/> ¹«±â °³Á¶¸¦ ÅëÇØ ½ºÄ¿¹Ì¼ÅÀÇ °ø°Ý ´É·ÂÀÌ ´ëÆø Çâ»óµË´Ï´Ù.<br/>"
 
 [SKR_ShotGrouping X2AbilityTemplate]
 LocFriendlyName="ÅºÂø±º Çü¼º"
-LocLongDescription="ºø³ª°£ »ç°ÝÀÌ 2 ´ë¹ÌÁö¸¦ ÀÔÈü´Ï´Ù."
-LocHelpText="ºø³ª°£ »ç°ÝÀÌ 2 ´ë¹ÌÁö¸¦ ÀÔÈü´Ï´Ù."
-LocPromotionPopupText="<Bullet/>.<br/>"
+LocLongDescription="ºø³ª°£ »ç°ÝÀÌ <Ability:iSHOTGROUPING_MISSDMG/> ´ë¹ÌÁö¸¦ ÀÔÈü´Ï´Ù."
+LocHelpText="ºø³ª°£ »ç°ÝÀÌ <Ability:iSHOTGROUPING_MISSDMG/> ´ë¹ÌÁö¸¦ ÀÔÈü´Ï´Ù."
+LocPromotionPopupText="<Bullet/> °³¸Ó¸®ÆÇÀÇ ºø³ª°£ »ç°Ý ´ë¹ÌÁö¿Í ÁßÃ¸µÉ ¼ö ÀÖ½À´Ï´Ù.<br/>"
 
 [SKR_DeepPockets X2AbilityTemplate]
 LocFriendlyName="±íÀº ÁÖ¸Ó´Ï"
-LocHelpText="À¯Æ¿¸®Æ¼ ½½·ÔÀÇ ¾ÆÀÌÅÛÀÇ »ç¿ëÈ½¼ö°¡ 1È¸ ´Ã¾î³³´Ï´Ù."
-LocLongDescription="À¯Æ¿¸®Æ¼ ½½·ÔÀÇ ¾ÆÀÌÅÛÀÇ »ç¿ëÈ½¼ö°¡ 1È¸ ´Ã¾î³³´Ï´Ù."
-LocPromotionPopupText="<Bullet/> ±¼Àý ÇÊµå³ª ¿À¹öµå¶óÀÌºê Ç÷Ã»°ú °°Àº ¼Ò¸ð¼º ¾ÆÀÌÅÛµéÀº ÀÌ ´É·ÂÀÇ ¿µÇ×À» ¹ÞÁö ¾Ê½À´Ï´Ù..<br/>"
-
-;¾²·¹±âÄÚµåÀÓ
-[X2Ability_ReworkedSkirmisherPerkPack]
-sTacticalAnalysisFlyoverText="Àü¼ú ºÐ¼®"
-sTacticalAnalysisWorldMessageText="<XGParam:StrValue0/!UnitName/>ÀÇ Çàµ¿ÀÌ Áß´ÜµÇ¾ú½À´Ï´Ù."
+LocHelpText="À¯Æ¿¸®Æ¼ ½½·ÔÀÇ ¾ÆÀÌÅÛÀÇ »ç¿ëÈ½¼ö°¡ <Ability:iDEEPPOCKET_BONUS_ITEM/>È¸ ´Ã¾î³³´Ï´Ù."
+LocLongDescription="À¯Æ¿¸®Æ¼ ½½·ÔÀÇ ¾ÆÀÌÅÛÀÇ »ç¿ëÈ½¼ö°¡ <Ability:iDEEPPOCKET_BONUS_ITEM/>È¸ ´Ã¾î³³´Ï´Ù."
+LocPromotionPopupText="<Bullet/> ±¼Àý ÇÊµå³ª ¿À¹öµå¶óÀÌºê Ç÷Ã»°ú °°Àº ¼Ò¸ð¼º ¾ÆÀÌÅÛµéÀº ÀÌ ´É·ÂÀÇ ¿µÇ×À» ¹ÞÁö ¾Ê½À´Ï´Ù.<br/>"

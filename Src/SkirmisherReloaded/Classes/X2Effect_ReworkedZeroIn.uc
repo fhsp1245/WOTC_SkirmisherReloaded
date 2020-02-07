@@ -16,20 +16,22 @@ function RegisterForEvents(XComGameState_Effect EffectGameState)
 //Zero In's aim and crit chance modifying
 function GetToHitModifiers(XComGameState_Effect EffectState, XComGameState_Unit Attacker, XComGameState_Unit Target, XComGameState_Ability AbilityState, class<X2AbilityToHitCalc> ToHitType, bool bMelee, bool bFlanking, bool bIndirectFire, out array<ShotModifierInfo> ShotModifiers)
 {
+	local X2AbilityToHitCalc_StandardAim AimCalc;
 	local ShotModifierInfo ShotMod;
-	local UnitValue ShotsValue;
+	local UnitValue ZeroInValue;
 
-	Attacker.GetUnitValue('ZeroInShots', ShotsValue);
-	if (ShotsValue.fValue > 0)
+	Attacker.GetUnitValue('ZeroInShots', ZeroInValue);
+	AimCalc = X2AbilityToHitCalc_StandardAim(AbilityState.GetMyTemplate().AbilityToHitCalc);
+	if (ZeroInValue.fValue > 0 && AimCalc.bReactionFire == false)
 	{
 		ShotMod.ModType = eHit_Crit;
 		ShotMod.Reason = FriendlyName;
-		ShotMod.Value = ShotsValue.fValue * iZEROIN_CRIT_BONUS;
+		ShotMod.Value = ZeroInValue.fValue * iZEROIN_CRIT_BONUS;
 		ShotModifiers.AddItem(ShotMod);
 
 		ShotMod.ModType = eHit_Success;
 		ShotMod.Reason = FriendlyName;
-		ShotMod.Value = ShotsValue.fValue * iZEROIN_AIM_BONUS;
+		ShotMod.Value = ZeroInValue.fValue * iZEROIN_AIM_BONUS;
 		ShotModifiers.AddItem(ShotMod);
 	}
 }

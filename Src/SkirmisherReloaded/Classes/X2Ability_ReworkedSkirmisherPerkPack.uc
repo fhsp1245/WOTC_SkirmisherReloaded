@@ -15,10 +15,17 @@ var config int iZEROIN_CRIT_BONUS;
 var config int iZEROIN_AIM_BONUS;
 
 var name ConcealedOverwatchTurn;
-var name ManualOverrideEffectName;
 var name ParkourEffectName;
-var localized string sTacticalAnalysisFlyoverText;
-var localized string sTacticalAnalysisWorldMessageText;
+
+var localized string sInterruptStunTitle;
+var localized string sInterruptStunFlyover;
+var localized string sInterruptTurnEndFlyover;
+var localized string sInterruptStunEndFlyover;
+var localized string sInterruptWorldMessage;
+var localized string sInterruptEndWorldMessage;
+
+var localized string sBattlelordHasCharge;
+var localized string sBattlelordHasCooldown;
 
 //Skirmisher can trigger Return Fire up to 3 times per turn
 static function ReworkedSkirmisherReturnFire(X2AbilityTemplate Template)
@@ -241,29 +248,51 @@ static function ReworkedInterrupt(X2AbilityTemplate Template)
 	local X2Effect_Stunned StunnedEffect;
 
 	AbilityTemplate = Template;
-
+	
 	StunnedEffect = new class'X2Effect_Stunned';
-	StunnedEffect.BuildPersistentEffect(1, true, true, false, eGameRule_UnitGroupTurnEnd);
+	StunnedEffect.BuildPersistentEffect(1, true, true, false, eGameRule_UnitGroupTurnBegin);//, eGameRule_UnitGroupTurnEnd  eGameRule_UnitGroupTurnBegin
 	StunnedEffect.ApplyChance = 100;
 	StunnedEffect.StunLevel = 1;
 	StunnedEffect.bIsImpairing = true;
-	StunnedEffect.EffectName = 'TacticalAnalysis';
-	//StunnedEffect.EffectTickedVisualizationFn = TacticalAnalysisVisualizationTicked;
-	//StunnedEffect.EffectRemovedVisualizationFn = TacticalAnalysisVisualizationTicked;
+	StunnedEffect.EffectName = 'InterruptStunned';
+	StunnedEffect.VisualizationFn = ReworkedInterruptVisualization;
+	StunnedEffect.EffectTickedVisualizationFn = ReworkedInterruptVisualizationTicked;
+	StunnedEffect.EffectRemovedVisualizationFn = ReworkedInterruptVisualizationTicked;
 	StunnedEffect.bRemoveWhenTargetDies = true;
 	StunnedEffect.bCanTickEveryAction = true;
 	StunnedEffect.bSkipAnimation = true;
 	StunnedEffect.CustomIdleOverrideAnim = '';
 	StunnedEffect.DamageTypes.Length = 0;
-
+	
 	AbilityTemplate.AddTargetEffect(StunnedEffect);
 }
 
-//Copied from X2Ability_XPackAbilitySet for Interrupt's stun effect visualization, but functionally it does nothing at this time.
-/*
-function TacticalAnalysisVisualizationTicked(XComGameState VisualizeGameState, out VisualizationActionMetadata ActionMetadata, const name EffectApplyResult)
+//For Interrupt's stun effect visualization 
+function ReworkedInterruptVisualization(XComGameState VisualizeGameState, out VisualizationActionMetadata ActionMetadata, const name EffectApplyResult)
 {
+	local XComGameState_Unit UnitState;
 
+	UnitState = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(ActionMetadata.StateObject_NewState.ObjectID));
+	if (UnitState == none)
+		return;
+
+	if(UnitState.ActionPoints.Length > 1)
+		class'X2StatusEffects'.static.AddEffectSoundAndFlyOverToTrack(ActionMetadata, VisualizeGameState.GetContext(), default.sInterruptStunFlyover, '', eColor_Bad, class'UIUtilities_Image'.const.UnitStatus_Stunned);
+	else
+		class'X2StatusEffects'.static.AddEffectSoundAndFlyOverToTrack(ActionMetadata, VisualizeGameState.GetContext(), default.sInterruptTurnEndFlyover, '', eColor_Bad, class'UIUtilities_Image'.const.UnitStatus_Stunned);
+	class'X2StatusEffects'.static.AddEffectMessageToTrack(
+		ActionMetadata,
+		default.sInterruptWorldMessage, 
+		VisualizeGameState.GetContext(),
+		default.sInterruptStunTitle,
+		"img:///UILibrary_Common.status_stunned",
+		eUIState_Warning);
+	class'X2StatusEffects'.static.UpdateUnitFlag(ActionMetadata, VisualizeGameState.GetContext());
+}
+
+//Working for stun ending flyover, but it wont have any effect currently. 
+function ReworkedInterruptVisualizationTicked(XComGameState VisualizeGameState, out VisualizationActionMetadata ActionMetadata, const name EffectApplyResult)
+{
 	local XComGameState_Unit UnitState;
 
 	UnitState = XComGameState_Unit(VisualizeGameState.GetGameStateForObjectID(ActionMetadata.StateObject_NewState.ObjectID));
@@ -274,13 +303,18 @@ function TacticalAnalysisVisualizationTicked(XComGameState VisualizeGameState, o
 	{
 		return;
 	}
-	
-	//class'X2StatusEffects'.static.AddEffectCameraPanToAffectedUnitToTrack(ActionMetadata, VisualizeGameState.GetContext());
-	class'X2StatusEffects'.static.AddEffectSoundAndFlyOverToTrack(ActionMetadata, VisualizeGameState.GetContext(), default.sTacticalAnalysisFlyoverText, '', eColor_Bad, class'UIUtilities_Image'.const.UnitStatus_Stunned);
-	class'X2StatusEffects'.static.AddEffectMessageToTrack(ActionMetadata, default.sTacticalAnalysisWorldMessageText, VisualizeGameState.GetContext(), class'UIEventNoticesTactical'.default.WillLostTitle, class'UIUtilities_Image'.const.UnitStatus_Stunned, eUIState_Bad);
+
+	class'X2StatusEffects'.static.AddEffectCameraPanToAffectedUnitToTrack(ActionMetadata, VisualizeGameState.GetContext());
+	class'X2StatusEffects'.static.AddEffectSoundAndFlyOverToTrack(ActionMetadata, VisualizeGameState.GetContext(), default.sInterruptStunEndFlyover, '', eColor_Bad, class'UIUtilities_Image'.const.UnitStatus_Stunned);
+	class'X2StatusEffects'.static.AddEffectMessageToTrack(
+		ActionMetadata,
+		default.sInterruptEndWorldMessage, 
+		VisualizeGameState.GetContext(),
+		default.sInterruptStunTitle,
+		"img:///UILibrary_Common.status_stunned",
+		eUIState_Warning);
 	class'X2StatusEffects'.static.UpdateUnitFlag(ActionMetadata, VisualizeGameState.GetContext());
 }
-*/
 
 // Reduce all cooldowns to 1.
 static function ReworkedManualOverride(X2AbilityTemplate Template)
@@ -370,16 +404,15 @@ static function ReworkedParkour(X2AbilityTemplate Template)
 {
 	local X2AbilityTemplate AbilityTemplate;
 	local X2AbilityTrigger_EventListener ActivationTrigger;
-	local X2Effect_GrantActionPoints AddActionPointsEffect;
 	local X2Condition_UnitValue UnitCondition;
-	local X2Effect_SetUnitValue UnitValueEffect;
+	local X2Effect_GrantActionPointsWithRecord AddActionPoint;
 
 	AbilityTemplate = Template;
 	AbilityTemplate.AbilityShooterEffects.Length = 0;
 	AbilityTemplate.AbilityTriggers.Length = 0;
 
 	ActivationTrigger = new class'X2AbilityTrigger_EventListener';
-	ActivationTrigger.ListenerData.EventID = 'ObjectMoved';
+	ActivationTrigger.ListenerData.EventID = 'ObjectMoved'; //'UnitMoveFinished' causes UI feedback conflict when use Reckoning
 	ActivationTrigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
 	ActivationTrigger.ListenerData.Deferral = ELD_OnStateSubmitted;
 	ActivationTrigger.ListenerData.Filter = eFilter_Unit;
@@ -389,17 +422,11 @@ static function ReworkedParkour(X2AbilityTemplate Template)
 	UnitCondition.AddCheckValue(default.ParkourEffectName, 0);
 	AbilityTemplate.AbilityShooterConditions.AddItem(UnitCondition);
 	
-	UnitValueEffect = new class'X2Effect_SetUnitValue';
-	UnitValueEffect.UnitName = default.ParkourEffectName;
-	UnitValueEffect.CleanupType = eCleanup_BeginTurn;
-	UnitValueEffect.NewValueToSet = 1;
-	//UnitValueEffect.TargetConditions.AddItem(UnitCondition);
-	AbilityTemplate.AddShooterEffect(UnitValueEffect);
-	
-	AddActionPointsEffect = new class'X2Effect_GrantActionPoints';
-	AddActionPointsEffect.PointType = class'X2CharacterTemplateManager'.default.RunAndGunActionPoint;
-	AddActionPointsEffect.NumActionPoints = default.iPARKOUR_ACTION_POINT;
-	AbilityTemplate.AddShooterEffect(AddActionPointsEffect);
+	AddActionPoint = new class'X2Effect_GrantActionPointsWithRecord';
+	AddActionPoint.AddRecordData(default.ParkourEffectName, eCleanup_BeginTurn);
+	AddActionPoint.PointType = class'X2CharacterTemplateManager'.default.RunAndGunActionPoint;
+	AddActionPoint.NumActionPoints = default.iPARKOUR_ACTION_POINT;
+	AbilityTemplate.AddTargetEffect(AddActionPoint);
 }
 
 defaultproperties

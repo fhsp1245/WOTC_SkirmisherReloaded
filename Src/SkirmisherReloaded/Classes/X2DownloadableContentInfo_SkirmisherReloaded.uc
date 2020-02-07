@@ -123,7 +123,7 @@ static function UpdateInterrupt()
 	local X2AbilityTemplateManager AbilityMgr;
 
 	AbilityMgr = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
-
+	
 	Template = AbilityMgr.FindAbilityTemplate('SkirmisherInterrupt');
 	class'X2Ability_ReworkedSkirmisherPerkPack'.static.ReworkedInterrupt(Template);
 
@@ -162,4 +162,73 @@ static function UpdateParkour()
 
 	Template = AbilityMgr.FindAbilityTemplate('Parkour');
 	class'X2Ability_ReworkedSkirmisherPerkPack'.static.ReworkedParkour(Template);
+}
+
+static function bool AbilityTagExpandHandler(string InString, out string OutString)
+{
+	local name Type;
+
+	Type = name(InString);
+	switch(Type)
+	{
+		case 'iMAX_RETURNFIRE_TRIGGER':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iMAX_RETURNFIRE_TRIGGER);
+			return true;
+		case 'iWHIPLASH_COOLDOWN':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iWHIPLASH_COOLDOWN);
+			return true;
+		case 'iINTERRUPT_COOLDOWN':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iINTERRUPT_COOLDOWN);
+			return true;
+		case 'iMANUAL_OVERRIDE_COOLDOWN':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iMANUAL_OVERRIDE_COOLDOWN);
+			return true;
+		case 'iBATTLELORD_COOLDOWN':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iBATTLELORD_COOLDOWN);
+			return true;
+		case 'sBATTLELORD_LOC_DESC':
+			if(!class'X2Ability_ReworkedSkirmisherPerkPack'.default.bHAS_BATTLELORD_ABILITYCHARGE)
+				OutString = class'X2Ability_ReworkedSkirmisherPerkPack'.default.sBattlelordHasCooldown;
+			else
+				OutString = class'X2Ability_ReworkedSkirmisherPerkPack'.default.sBattlelordHasCharge;
+			return true;
+		case 'iPARKOUR_ACTION_POINT':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iPARKOUR_ACTION_POINT);
+			return true;
+		case 'iZEROIN_AIM_BONUS':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iZEROIN_AIM_BONUS);
+			return true;
+		case 'iZEROIN_CRIT_BONUS':
+			OutString = string(class'X2Ability_ReworkedSkirmisherPerkPack'.default.iZEROIN_CRIT_BONUS);
+			return true;
+		case 'iWRATH_DAMAGE_BONUS':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iWRATH_DAMAGE_BONUS);
+			return true;
+		case 'iFULLTHROTTLE_COOLDOWN':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iFULLTHROTTLE_COOLDOWN);
+			return true;
+		case 'iBULLETTIME_GRAZEDMG_MODIFIER':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iBULLETTIME_GRAZEDMG_MODIFIER);
+			return true;
+		case 'iBULLETTIME_TOCRITHIT_MODIFIER':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iBULLETTIME_TOCRITHIT_MODIFIER);
+			return true;
+		case 'iTUNING_BONUSDMG':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iTUNING_BONUSDMG);
+			return true;
+		case 'iTUNING_BONUSCLIP_PRIMARY':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iTUNING_BONUSCLIP_PRIMARY);
+			return true;
+		case 'iTUNING_BONUSCRIT_SECONDARY':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iTUNING_BONUSCRIT_SECONDARY);
+			return true;
+		case 'iSHOTGROUPING_MISSDMG':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iSHOTGROUPING_MISSDMG);
+			return true;
+		case 'iDEEPPOCKET_BONUS_ITEM':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iDEEPPOCKET_BONUS_ITEM);
+			return true;
+		default: 
+			return false;
+	}
 }

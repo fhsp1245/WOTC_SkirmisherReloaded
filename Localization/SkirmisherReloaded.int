@@ -1,0 +1,13 @@
+[X2Ability_ReworkedSkirmisherPerkPack]
+sInterruptStunTitle="Interrupt"
+sInterruptStunFlyover="Interrupted: Remaining unit action"
+sInterruptTurnEndFlyover="End Process: Unit turn end"
+
+;Battlelord promotion text
+sBattlelordHasCharge="Battlelord can only used limited number of times per mission."
+sBattlelordHasCooldown="Battlelord has <Ability:iBATTLELORD_COOLDOWN/> turn cooldown."
+
+;not have any visualization effect yet
+sInterruptStunEndFlyover="Resume"
+sInterruptWorldMessage="<XGParam:StrValue0/!UnitName/>'s action has been stopped."
+sInterruptEndWorldMessage="<XGParam:StrValue0/!UnitName/> resume its action."

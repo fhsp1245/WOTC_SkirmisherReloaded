@@ -3,7 +3,8 @@
   <PropertyGroup>
     <Guid>84643029-f9f9-40bc-bcbf-358ed4ec3693</Guid>
     <Name>Skirmisher Reloaded</Name>
-    <Description>Description of My XCOM 2 Mod.</Description>
+    <Description>Skirmisher has unique concept about their hit-and-run combat style. but they have too many restrictions to using their skills - ability charges(Interrupt, etc.), tough restrictions(Battlelord, Zero In, etc), or just useless perks(full throttle).
+I reworked almost all perks and add some new perks, focused on their survivability, and improve their crit-hit ability.</Description>
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>SKR_Revengeance</AssemblyName>
     <RootNamespace>SKR_Revengeance</RootNamespace>
@@ -32,6 +33,12 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Content\SKR_NewSkirmisherPerkPack.upk">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SkirmisherReloaded.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\SkirmisherReloaded.kor">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Localization\XComGame.int">

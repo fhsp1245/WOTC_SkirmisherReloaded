@@ -230,8 +230,8 @@ static function X2AbilityTemplate SKR_Optimization()
 
 	OptimizationEffect = new class'X2Effect_Optimization_SKR';
 	OptimizationEffect.bAllowCrit = true;
-	OptimizationEffect.iOPTIMIZATION_AIM_BONUS = default.iOPTIMIZATION_AIM_BONUS;
-	OptimizationEffect.iOPTIMIZATION_CRIT_BONUS = default.iOPTIMIZATION_CRIT_BONUS;
+	OptimizationEffect.iOPTIMIZATION_AIM_BONUS = class'X2Ability_ReworkedSkirmisherPerkPack'.default.iZEROIN_AIM_BONUS;
+	OptimizationEffect.iOPTIMIZATION_CRIT_BONUS = class'X2Ability_ReworkedSkirmisherPerkPack'.default.iZEROIN_CRIT_BONUS;
 	OptimizationEffect.BuildPersistentEffect(1, true, false, false);
 	OptimizationEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage,,,Template.AbilitySourceName);
 	Template.AddTargetEffect(OptimizationEffect);
@@ -342,7 +342,6 @@ static function X2AbilityTemplate SKR_TotalCombat()
 
 	return Template;
 }
-
 
 DefaultProperties
 {
