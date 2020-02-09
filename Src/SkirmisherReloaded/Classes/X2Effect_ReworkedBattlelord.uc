@@ -18,6 +18,7 @@ simulated protected function OnEffectAdded(const out EffectAppliedData ApplyEffe
 	TargetUnit = XComGameState_Unit(kNewTargetState);
 	GroupState = TargetUnit.GetGroupMembership();
 
+	TargetUnit.SetUnitFloatValue('ReflexDisabled', 1, eCleanup_Never);
 	TargetUnit.SetUnitFloatValue('BattlelordOriginalGroup', GroupState.ObjectID, eCleanup_BeginTactical);
 
 	GroupState = XComGameState_AIGroup(NewGameState.CreateNewStateObject(class'XComGameState_AIGroup'));
@@ -40,6 +41,7 @@ simulated function OnEffectRemoved(const out EffectAppliedData ApplyEffectParame
 	GroupState = XComGameState_AIGroup(NewGameState.ModifyStateObject(class'XComGameState_AIGroup', GroupValue.fValue));
 	GroupState.AddUnitToGroup(TargetUnit.ObjectID, NewGameState);
 	TargetUnit.ClearUnitValue('BattlelordOriginalGroup');
+	TargetUnit.ClearUnitValue('ReflexDisabled');
 }
 
 function ModifyTurnStartActionPoints(XComGameState_Unit UnitState, out array<name> ActionPoints, XComGameState_Effect EffectState)
@@ -49,6 +51,7 @@ function ModifyTurnStartActionPoints(XComGameState_Unit UnitState, out array<nam
 
 	GroupState = UnitState.GetGroupMembership();
 	UnitState.GetUnitValue('BattlelordOriginalGroup', GroupValue);
+	//UnitState.ClearUnitValue('BattlelordActivated');
 
 	if (GroupState.ObjectID != GroupValue.fValue && UnitState.IsAbleToAct())
 	{
@@ -56,6 +59,8 @@ function ModifyTurnStartActionPoints(XComGameState_Unit UnitState, out array<nam
 		ActionPoints.AddItem(class'X2CharacterTemplateManager'.default.SkirmisherInterruptActionPoint);
 		ActionPoints.AddItem(class'X2CharacterTemplateManager'.default.SkirmisherInterruptActionPoint);
 	}
+
+	//UnitState.SetUnitFloatValue('BattlelordActivated',1, eCleanup_BeginTactical);
 }
 
 DefaultProperties

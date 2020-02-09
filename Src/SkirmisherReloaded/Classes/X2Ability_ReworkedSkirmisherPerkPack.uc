@@ -223,6 +223,7 @@ static function ReworkedInterruptInput(X2AbilityTemplate Template)
 	local X2AbilityTemplate AbilityTemplate;
 	local X2AbilityCooldown Cooldown;
 	local X2AbilityCost_ActionPoints AbilityCost;
+	local X2Effect_SetUnitValue UnitValueEffect;
 
 	AbilityTemplate = Template;
 
@@ -238,6 +239,12 @@ static function ReworkedInterruptInput(X2AbilityTemplate Template)
 	Cooldown = new class'X2AbilityCooldown';
 	Cooldown.iNumTurns = default.iINTERRUPT_COOLDOWN;
 	AbilityTemplate.AbilityCooldown = Cooldown;
+
+	UnitValueEffect = new class'X2Effect_SetUnitValue';
+	UnitValueEffect.UnitName = 'ReflexDisabled';
+	UnitValueEffect.CleanupType = eCleanup_BeginTurn;
+	UnitValueEffect.NewValueToSet = 1;
+	AbilityTemplate.AddTargetEffect(UnitValueEffect);
 }
 
 //StunnedEffect from X2Ability_XPackAbilitySet - AddTacticalAnalysis();
