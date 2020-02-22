@@ -14,9 +14,6 @@ var config int iPARKOUR_ACTION_POINT;
 var config int iZEROIN_CRIT_BONUS;
 var config int iZEROIN_AIM_BONUS;
 
-var name ConcealedOverwatchTurn;
-var name ParkourEffectName;
-
 var localized string sInterruptStunTitle;
 var localized string sInterruptStunFlyover;
 var localized string sInterruptTurnEndFlyover;
@@ -199,17 +196,20 @@ static function ReworkedWhiplash(X2AbilityTemplate Template)
 
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
 	WeaponDamageEffect.EffectDamageValue = default.WHIPLASH_BASE;
+	UnitPropertyCondition = new class'X2Condition_UnitProperty';
+	UnitPropertyCondition.ExcludeRobotic = true;
+	UnitPropertyCondition.ExcludeOrganic = false;
+	WeaponDamageEffect.TargetConditions.AddItem(UnitPropertyCondition);
 	Template.AddTargetEffect(WeaponDamageEffect);
 
 	WeaponDamageEffect = new class'X2Effect_ApplyWeaponDamage';
-	WeaponDamageEffect.bIgnoreArmor = true;	
 	WeaponDamageEffect.EffectDamageValue = default.WHIPLASH_ROBOT;
 	UnitPropertyCondition = new class'X2Condition_UnitProperty';
 	UnitPropertyCondition.ExcludeRobotic = false;
 	UnitPropertyCondition.ExcludeOrganic = true;
 	WeaponDamageEffect.TargetConditions.AddItem(UnitPropertyCondition);
 	Template.AddTargetEffect(WeaponDamageEffect);
-	
+
 	StandardAim = new class'X2AbilityToHitCalc_StandardAim';
 	StandardAim.BuiltInCritMod = default.iWHIPLASH_CRIT_CHANCE;
 	StandardAim.bAllowCrit = true;
@@ -226,7 +226,6 @@ static function ReworkedInterruptInput(X2AbilityTemplate Template)
 	local X2Effect_SetUnitValue UnitValueEffect;
 
 	AbilityTemplate = Template;
-
 	AbilityTemplate.AbilityCharges = none;
 
 	AbilityTemplate.AbilityCosts.Length = 0;
@@ -257,7 +256,7 @@ static function ReworkedInterrupt(X2AbilityTemplate Template)
 	AbilityTemplate = Template;
 	
 	StunnedEffect = new class'X2Effect_Stunned';
-	StunnedEffect.BuildPersistentEffect(1, true, true, false, eGameRule_UnitGroupTurnBegin);//, eGameRule_UnitGroupTurnEnd  eGameRule_UnitGroupTurnBegin
+	StunnedEffect.BuildPersistentEffect(1, true, true, false, eGameRule_UnitGroupTurnBegin);
 	StunnedEffect.ApplyChance = 100;
 	StunnedEffect.StunLevel = 1;
 	StunnedEffect.bIsImpairing = true;
@@ -369,7 +368,20 @@ static function ReworkedBattlelord(X2AbilityTemplate Template)
 	AbilityCost.bConsumeAllPoints = true;
 	AbilityCost.AllowedTypes.RemoveItem(class'X2CharacterTemplateManager'.default.SkirmisherInterruptActionPoint);
 	AbilityTemplate.AbilityCosts.AddItem(AbilityCost);
+	if(default.bHAS_BATTLELORD_ABILITYCHARGE)
+	{
+		ChargeCost = new class'X2AbilityCost_Charges';
+		ChargeCost.NumCharges = 1;
+		AbilityTemplate.AbilityCosts.AddItem(ChargeCost);
 
+		Charges = new class'X2AbilityCharges';
+		Charges.InitialCharges = default.iBATTLELORD_CHARGE;
+		AbilityTemplate.AbilityCharges = Charges;
+	}
+	Cooldown = new class'X2AbilityCooldown';
+	Cooldown.iNumTurns = default.iBATTLELORD_COOLDOWN;
+	AbilityTemplate.AbilityCooldown = Cooldown;
+	/*
 	if(!default.bHAS_BATTLELORD_ABILITYCHARGE)
 	{
 		Cooldown = new class'X2AbilityCooldown';
@@ -386,7 +398,7 @@ static function ReworkedBattlelord(X2AbilityTemplate Template)
 		Charges.InitialCharges = default.iBATTLELORD_CHARGE;
 		AbilityTemplate.AbilityCharges = Charges;
 	}
-
+	*/
 	BattlelordEffect = new class'X2Effect_ReworkedBattlelord';
 	BattlelordEffect.BuildPersistentEffect(1, false, , , eGameRule_PlayerTurnBegin);
 	BattlelordEffect.SetDisplayInfo(ePerkBuff_Bonus, Template.LocFriendlyName, Template.LocLongDescription, Template.IconImage, true, , Template.AbilitySourceName);
@@ -426,18 +438,33 @@ static function ReworkedParkour(X2AbilityTemplate Template)
 	AbilityTemplate.AbilityTriggers.AddItem(ActivationTrigger);
 
 	UnitCondition = new class'X2Condition_UnitValue';
-	UnitCondition.AddCheckValue(default.ParkourEffectName, 0);
+	UnitCondition.AddCheckValue('ParkourValue', 0);
 	AbilityTemplate.AbilityShooterConditions.AddItem(UnitCondition);
 	
 	AddActionPoint = new class'X2Effect_GrantActionPointsWithRecord';
-	AddActionPoint.AddRecordData(default.ParkourEffectName, eCleanup_BeginTurn);
+	AddActionPoint.AddRecordData('ParkourValue', eCleanup_BeginTurn);
 	AddActionPoint.PointType = class'X2CharacterTemplateManager'.default.RunAndGunActionPoint;
 	AddActionPoint.NumActionPoints = default.iPARKOUR_ACTION_POINT;
 	AbilityTemplate.AddTargetEffect(AddActionPoint);
 }
 
+static function ReworkedJudgment(X2AbilityTemplate Template)
+{
+	local X2AbilityTemplate AbilityTemplate;
+	local X2Effect_Persistent PersistentEffect;
+
+	AbilityTemplate = Template;
+	AbilityTemplate.AbilityTargetEffects.Length = 0;
+
+	PersistentEffect = new class'X2Effect_Persistent';
+	PersistentEffect.BuildPersistentEffect(1, true, false, false);
+	PersistentEffect.SetDisplayInfo(ePerkBuff_Passive, AbilityTemplate.LocFriendlyName, AbilityTemplate.LocLongDescription, AbilityTemplate.IconImage, true,, AbilityTemplate.AbilitySourceName);
+	AbilityTemplate.AddTargetEffect(PersistentEffect);
+
+	AbilityTemplate.AdditionalAbilities.AddItem('SKR_JudgmentListener');
+}
+
 defaultproperties
 {
-	ConcealedOverwatchTurn="ConcealedOverwatch"
-	ParkourEffectName = "ParkourTriggered"
+	
 }

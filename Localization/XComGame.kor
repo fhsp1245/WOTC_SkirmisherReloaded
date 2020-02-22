@@ -111,3 +111,20 @@ LocFriendlyName="깊은 주머니"
 LocHelpText="유틸리티 슬롯의 아이템의 사용횟수가 <Ability:iDEEPPOCKET_BONUS_ITEM/>회 늘어납니다."
 LocLongDescription="유틸리티 슬롯의 아이템의 사용횟수가 <Ability:iDEEPPOCKET_BONUS_ITEM/>회 늘어납니다."
 LocPromotionPopupText="<Bullet/> 굴절 필드나 오버드라이브 혈청과 같은 소모성 아이템들은 이 능력의 영항을 받지 않습니다.<br/>"
+
+[Judgment X2AbilityTemplate]
+LocFriendlyName="심판"
+LocHelpText="이번 턴에 적을 죽였다면, 턴이 끝날 때 스커미셔의 시야에 있는 각각의 적들이 공포에 빠질 수 있습니다."
+LocLongDescription="이번 턴에 적을 죽였다면, 턴이 끝날 때 스커미셔의 시야에 있는 각각의 적들이 공포에 빠질 수 있습니다."
+LocPromotionPopupText="<Bullet/> 스커미셔의 시야에 있는 각각의 적들이 60% 확률로 심판의 목표가 되며, 그 뒤 의지에 기반해 공포 여부를 결정합니다.<br/><Bullet/> 인터럽트 행동이 종료될 때는 심판이 발동하지 않습니다.<br/>"
+
+[JudgmentListener X2AbilityTemplate]
+LocFriendlyName="심판"
+LocHelpText="이번 턴에 적을 죽였다면, 턴이 끝날 때 스커미셔의 시야에 있는 각각의 적들이 공포에 빠질 수 있습니다"
+LocLongDescription=이번 턴에 적을 죽였다면, 턴이 끝날 때 스커미셔의 시야에 있는 각각의 적들이 공포에 빠질 수 있습니다"
+LocPromotionPopupText=""
+
+[JudgmentTrigger X2AbilityTemplate]
+LocFriendlyName="심판"
+LocLongDescription="이번 턴에 적을 죽였다면, 턴이 끝날 때 스커미셔의 시야에 있는 각각의 적들이 공포에 빠질 수 있습니다"
+LocHelpText="이번 턴에 적을 죽였다면, 턴이 끝날 때 스커미셔의 시야에 있는 각각의 적들이 공포에 빠질 수 있습니다"

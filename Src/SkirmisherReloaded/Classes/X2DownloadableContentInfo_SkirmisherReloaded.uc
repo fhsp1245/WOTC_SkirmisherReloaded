@@ -36,6 +36,7 @@ static event OnPostTemplatesCreated()
 	UpdateManualOverride();
 	UpdateBattlelord();
 	UpdateParkour();
+	UpdateJudgment();
 }
 
 static function UpdateReturnFire()
@@ -164,6 +165,22 @@ static function UpdateParkour()
 	class'X2Ability_ReworkedSkirmisherPerkPack'.static.ReworkedParkour(Template);
 }
 
+static function UpdateJudgment()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityTemplateManager AbilityMgr;
+
+	AbilityMgr = class'X2AbilityTemplateManager'.static.GetAbilityTemplateManager();
+
+	Template = AbilityMgr.FindAbilityTemplate('Judgment');
+	class'X2Ability_ReworkedSkirmisherPerkPack'.static.ReworkedJudgment(Template);
+	/*
+	Template = AbilityMgr.FindAbilityTemplate('JudgmentTrigger');
+	class'X2Ability_ReworkedSkirmisherPerkPack'.static.ReworkedJudgmentTrigger(Template);
+	*/
+	
+}
+
 static function bool AbilityTagExpandHandler(string InString, out string OutString)
 {
 	local name Type;
@@ -227,6 +244,9 @@ static function bool AbilityTagExpandHandler(string InString, out string OutStri
 			return true;
 		case 'iDEEPPOCKET_BONUS_ITEM':
 			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iDEEPPOCKET_BONUS_ITEM);
+			return true;
+		case 'iJUDGMENT_TARGET_CHANCE':
+			OutString = string(class'X2Ability_NewSkirmisherPerkPack'.default.iJUDGMENT_TARGET_CHANCE);
 			return true;
 		default: 
 			return false;

@@ -76,6 +76,9 @@ I reworked almost all perks and add some new perks, focused on their survivabili
     <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedBattlelord.uc">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedJudgment.uc">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Src\SkirmisherReloaded\Classes\X2Effect_ReworkedManualOverride.uc">
       <SubType>Content</SubType>
     </Content>

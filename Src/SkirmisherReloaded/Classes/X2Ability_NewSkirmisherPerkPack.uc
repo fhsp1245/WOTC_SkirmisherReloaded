@@ -12,8 +12,10 @@ var config int iTUNING_MINCLIPSIZE;
 var config int iTUNING_BONUSCRIT_SECONDARY;
 var config int iSHOTGROUPING_MISSDMG;
 var config int iDEEPPOCKET_BONUS_ITEM;
-
-var name ManualOverrideEffectName;
+var config int iJUDGMENT_TARGET_CHANCE;
+var config int iJUDGMENT_BONUSVALUE ;
+var config int iJUDGMENT_MINCAP;
+var config int iJUDGMENT_MAXCAP;
 
 static function array<X2DataTemplate> CreateTemplates()
 {
@@ -28,7 +30,9 @@ static function array<X2DataTemplate> CreateTemplates()
 	Templates.AddItem(SKR_Tuning());
 	Templates.AddItem(SKR_ShotGrouping());
 	Templates.AddItem(SKR_DeepPockets());
-	Templates.AddItem(SKR_TotalCombat());
+	Templates.AddItem(SKR_TotalCombat()); 
+	Templates.AddItem(NewJudgmentTrigger());
+	Templates.AddItem(NewJudgmentListener());
 
 	return Templates;
 }
@@ -120,7 +124,7 @@ static function X2AbilityTemplate NewFullthrottle()
 
 	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_AlwaysShow;
 	Template.AbilitySourceName = 'eAbilitySource_Perk';
-	Template.Hostility = eHostility_Movement;
+	Template.Hostility = eHostility_Neutral;
 	Template.AbilityConfirmSound = "TacticalUI_Activate_Ability_Run_N_Gun";
 
 	Cooldown = new class'X2AbilityCooldown';
@@ -302,7 +306,7 @@ static function X2AbilityTemplate SKR_ShotGrouping()
 	Template.AbilityTargetStyle = default.SelfTarget;
 	Template.AbilityTriggers.AddItem(default.UnitPostBeginPlayTrigger);
 
-	MissDamageEffect = new class'X2Effect_shotGrouping_SKR';
+	MissDamageEffect = new class'X2Effect_ShotGrouping_SKR';
 	MissDamageEffect.iSHOTGROUPING_MISSDMG = default.iSHOTGROUPING_MISSDMG;
 	MissDamageEffect.BuildPersistentEffect(1, true, false, false);
 	MissDamageEffect.SetDisplayInfo(ePerkBuff_Passive, Template.LocFriendlyName, Template.GetMyLongDescription(), Template.IconImage, true, ,Template.AbilitySourceName);
@@ -343,7 +347,157 @@ static function X2AbilityTemplate SKR_TotalCombat()
 	return Template;
 }
 
+//Ability for Judgment's kill trigger
+static function X2AbilityTemplate NewJudgmentListener()
+{
+	local X2AbilityTemplate Template;
+	local X2AbilityTrigger_EventListener ActivationTrigger;
+	local X2Effect_SetUnitValue UnitValueEffect;
+	
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'SKR_JudgmentListener');
+
+	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_Judgment";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+	
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+
+	ActivationTrigger = new class'X2AbilityTrigger_EventListener';
+	ActivationTrigger.ListenerData.EventID = 'KillMail';
+	ActivationTrigger.ListenerData.EventFn = class'XComGameState_Ability'.static.FullThrottleListener;
+	ActivationTrigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	ActivationTrigger.ListenerData.Filter = eFilter_None;
+	Template.AbilityTriggers.AddItem(ActivationTrigger);
+
+	UnitValueEffect = new class'X2Effect_SetUnitValue';
+	UnitValueEffect.UnitName = 'JudgmentValue';
+	UnitValueEffect.NewValueToSet = 1;
+	UnitValueEffect.CleanupType = eCleanup_BeginTurn;
+	Template.AddTargetEffect(UnitValueEffect);
+
+	Template.bShowActivation = false;
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+
+	return Template;
+}
+
+//Ability for Judgment's turn end trigger
+static function X2AbilityTemplate NewJudgmentTrigger()
+{
+	local X2AbilityTemplate Template;
+	local X2Condition_UnitValue UnitValueCondition;
+	local X2Condition_UnitProperty TargetCondition;
+	local X2Condition_UnitType UnitTypeCondition;
+	local X2Condition_Visibility TargetVisibilityCondition;
+	local X2AbilityTrigger_EventListener ActivationTrigger;
+	local X2AbilityMultiTarget_AllUnits MultiTarget;
+	local X2Effect_Panicked PanicEffect;
+
+	`CREATE_X2ABILITY_TEMPLATE(Template, 'JudgmentTrigger');
+
+	Template.IconImage = "img:///UILibrary_XPACK_Common.PerkIcons.UIPerk_Judgment";
+	Template.AbilitySourceName = 'eAbilitySource_Perk';
+	Template.eAbilityIconBehaviorHUD = eAbilityIconBehavior_NeverShow;
+	Template.Hostility = eHostility_Neutral;
+
+	Template.AbilityToHitCalc = default.DeadEye;
+	Template.AbilityTargetStyle = default.SelfTarget;
+	
+	ActivationTrigger = new class'X2AbilityTrigger_EventListener';
+	ActivationTrigger.ListenerData.EventID = 'PlayerTurnEnded';
+	ActivationTrigger.ListenerData.EventFn = class'XComGameState_Ability'.static.AbilityTriggerEventListener_Self;
+	ActivationTrigger.ListenerData.Deferral = ELD_OnStateSubmitted;
+	ActivationTrigger.ListenerData.Filter = eFilter_Player;
+	Template.AbilityTriggers.AddItem(ActivationTrigger);
+
+	Template.AbilityShooterConditions.AddItem(default.LivingShooterProperty);
+
+	UnitValueCondition = new class'X2Condition_UnitValue';
+	UnitValueCondition.AddCheckValue('JudgmentValue', 1);
+	Template.AbilityShooterConditions.AddItem(UnitValueCondition);
+
+	Template.AddShooterEffectExclusions();
+	
+	MultiTarget = new class'X2AbilityMultiTarget_AllUnits';
+	MultiTarget.bAcceptFriendlyUnits = false;
+	MultiTarget.RandomChance = default.iJUDGMENT_TARGET_CHANCE;
+	Template.AbilityMultiTargetStyle = MultiTarget;
+	
+	TargetVisibilityCondition = new class'X2Condition_Visibility';
+	TargetVisibilityCondition.bRequireBasicVisibility = true;
+	Template.AbilityMultiTargetConditions.AddItem(TargetVisibilityCondition);
+	 
+	TargetCondition = new class'X2Condition_UnitProperty';
+	TargetCondition.ExcludeAlive = false;
+	TargetCondition.ExcludeDead = true;
+	TargetCondition.ExcludeFriendlyToSource = true;
+	TargetCondition.ExcludeHostileToSource = false;
+	TargetCondition.TreatMindControlledSquadmateAsHostile = false;
+	TargetCondition.FailOnNonUnits = true;
+	TargetCondition.ExcludeCivilian = true;
+	TargetCondition.ExcludeRobotic = true;
+	Template.AbilityMultiTargetConditions.AddItem(TargetCondition);
+
+	UnitTypeCondition = new class'X2Condition_UnitType';
+	UnitTypeCondition.ExcludeTypes.AddItem('TheLost');
+	Template.AbilityMultiTargetConditions.AddItem( UnitTypeCondition );
+
+	PanicEffect = class'X2StatusEffects'.static.CreatePanickedStatusEffect();
+	PanicEffect.ApplyChanceFn = JudgmentApplyChance;
+	PanicEffect.VisualizationFn = class'X2Ability_SkirmisherAbilitySet'.static.Judgment_Visualization;
+	
+	Template.AddMultiTargetEffect(PanicEffect);
+
+	Template.CustomFireAnim = 'HL_Judgment';
+	Template.bShowActivation = true;
+	Template.CinescriptCameraType = "Skirmisher_Judgment";
+
+	Template.BuildNewGameStateFn = TypicalAbility_BuildGameState;
+	Template.BuildVisualizationFn = TypicalAbility_BuildVisualization;
+
+	//BEGIN AUTOGENERATED CODE: Template Overrides 'JudgmentTrigger'
+	Template.bFrameEvenWhenUnitIsHidden = true;
+	Template.ActivationSpeech = 'Judgement';
+	Template.CinescriptCameraType = "Skirmisher_Judgment";
+	//END AUTOGENERATED CODE: Template Overrides 'JudgmentTrigger'
+
+	return Template;
+}
+
+function name JudgmentApplyChance(const out EffectAppliedData ApplyEffectParameters, XComGameState_BaseObject kNewTargetState, XComGameState NewGameState)
+{
+	//  this mimics the panic hit roll without actually BEING the panic hit roll
+	local XComGameState_Unit TargetUnit;
+	local name ImmuneName;
+	local int AttackVal, DefendVal, TargetRoll, RandRoll;
+
+	AttackVal = default.iJUDGMENT_BONUSVALUE ;
+
+	TargetUnit = XComGameState_Unit(kNewTargetState);
+	if( TargetUnit != none )
+	{
+		foreach class'X2AbilityToHitCalc_PanicCheck'.default.PanicImmunityAbilities(ImmuneName)
+		{
+			if( TargetUnit.FindAbility(ImmuneName).ObjectID != 0 )
+			{
+				return 'AA_UnitIsImmune';
+			}
+		}
+
+		DefendVal = TargetUnit.GetCurrentStat(eStat_Will);
+		TargetRoll = class'X2AbilityToHitCalc_PanicCheck'.default.BaseValue + AttackVal - DefendVal;
+		TargetRoll = Clamp(TargetRoll, default.iJUDGMENT_MINCAP, default.iJUDGMENT_MAXCAP);
+		RandRoll = `SYNC_RAND(100);
+		if( RandRoll < TargetRoll )
+			return 'AA_Success';
+	}
+
+	return 'AA_EffectChanceFailed';
+}
+
 DefaultProperties
 {
-	ManualOverrideEffectName = "ManualOverrideTriggered";
+	
 }
